@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Deportiva - Delta Sport</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 0; }
-        header { background: #2d6cdf; color: #fff; padding: 1rem 2rem; text-align: center; }
+        body { font-family: Arial, sans-serif; background: #111; color: #f8f9fa; margin: 0; padding: 0; }
+        header { background: #222; color: #fff; padding: 1rem 2rem; text-align: center; }
         .productos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin: 2rem 0; }
-        .producto { background: #fff; border-radius: 1rem; box-shadow: 0 2px 8px #0001; padding: 1.5rem; width: 270px; text-align: center; }
+        .producto { background: #181818; color: #f8f9fa; border-radius: 1rem; box-shadow: 0 2px 8px #0001; padding: 1.5rem; width: 270px; text-align: center; }
         .producto img { width: 120px; height: 120px; object-fit: contain; margin-bottom: 1rem; }
         .producto h2 { font-size: 1.1rem; margin: 0.5rem 0; }
-        .producto p { color: #555; }
+        .producto p, .producto h2, .producto .precio { color: #f8f9fa; }
         .producto .precio { color: #2d6cdf; font-weight: bold; font-size: 1.1rem; margin: 0.5rem 0; }
         .producto button { background: #2d6cdf; color: #fff; border: none; border-radius: 0.5rem; padding: 0.5rem 1.5rem; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
         .producto button:hover { background: #1a428a; }
-        .contacto { text-align: center; margin: 2rem 0 1rem 0; color: #333; }
+        .contacto { text-align: center; margin: 2rem 0 1rem 0; color: #f8f9fa; }
+        #contactoBtn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: #fff; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 2px 8px #0003; font-size: 2rem; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        #contactoEmergente { display: none; position: fixed; bottom: 100px; right: 30px; background: #222; color: #f8f9fa; padding: 1.5rem 2rem; border-radius: 1rem; box-shadow: 0 2px 16px #0004; z-index: 1001; text-align: center; }
+        #contactoEmergente a { display: block; margin: 1rem 0; font-size: 1.2rem; text-decoration: none; }
+        #contactoEmergente a.whatsapp { color: #25d366; }
+        #contactoEmergente a.instagram { color: #c13584; }
     </style>
 </head>
 <body>
     <header>
+        <img src="../../../../Downloads/Diseños/delta.jpg" alt="Logo Delta Sport" style="max-width:120px;display:block;margin:0 auto 1rem auto;border-radius:1rem;box-shadow:0 2px 8px #0003;background:#fff;object-fit:contain;aspect-ratio:1/1;">
         <h1>Tienda Deportiva - Delta Sport</h1>
         <p>Productos deportivos, entrega y compra vía WhatsApp</p>
     </header>
@@ -59,24 +65,41 @@
             <div class="precio">6.50 VEF</div>
             <button>Comprar</button>
         </div>
-        <div class="producto">
-            <img src="https://cdn-icons-png.flaticon.com/512/861/861512.png" alt="Balón de Fútbol">
-            <h2>Balón de Fútbol</h2>
-            <p>Balón profesional, ideal para partidos y entrenamientos.</p>
-            <div class="precio">15.00 VEF</div>
-            <button>Comprar</button>
-        </div>
-        <div class="producto">
-            <img src="https://cdn-icons-png.flaticon.com/512/861/861511.png" alt="Balón de Voleibol">
-            <h2>Balón de Voleibol</h2>
-            <p>Balón ligero y resistente, perfecto para juegos en cancha o playa.</p>
-            <div class="precio">14.00 VEF</div>
-            <button>Comprar</button>
-        </div>
+        
     </section>
     <div class="contacto">
         <p><b>Para la entrega y compra del producto comunicarse con el vendedor vía WhatsApp</b></p>
         <p>Gmail: sm172607q@gmail.com<br>Teléfono: 04163403334</p>
     </div>
+    <button id="contactoBtn" aria-label="Contactar" style="position:fixed;bottom:30px;right:30px;background:#25d366;color:#fff;border:none;border-radius:50%;width:60px;height:60px;box-shadow:0 2px 8px #0003;font-size:2rem;cursor:pointer;z-index:1000;display:flex;align-items:center;justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M2 21l1.65-4.95A8.96 8.96 0 013 12C3 6.48 7.48 2 13 2s10 4.48 10 10-4.48 10-10 10a9.01 9.01 0 01-4.05-.95L2 21zm4.05-2.05l.3.15A7.01 7.01 0 0013 20c3.87 0 7-3.13 7-7s-3.13-7-7-7-7 3.13-7 7c0 1.13.25 2.2.7 3.15l.15.3-.95 2.85 2.85-.95z"></path></svg>
+    </button>
+    <div id="contactoEmergente">
+        <h3>¡Contáctanos!</h3>
+        <a href="https://w.app/jhvxeo" target="_blank" class="whatsapp">
+            WhatsApp: Contactar aquí
+        </a>
+        <a href="https://instagram.com/delta._shop" target="_blank" class="instagram">
+            Instagram: @delta._shop
+        </a>
+        <button onclick="document.getElementById('contactoEmergente').style.display='none'">Cerrar</button>
+    </div>
+    <script>
+        // Botón emergente de contacto
+        document.getElementById('contactoBtn').onclick = function() {
+            var emergente = document.getElementById('contactoEmergente');
+            emergente.style.display = emergente.style.display === 'none' ? 'block' : 'none';
+        };
+        // Redirigir al contacto al hacer clic en cualquier botón Comprar
+        document.querySelectorAll('.producto button').forEach(function(btn) {
+            btn.onclick = function() {
+                // Mostrar el popup de contacto
+                var emergente = document.getElementById('contactoEmergente');
+                emergente.style.display = 'block';
+                // Scroll al popup (opcional)
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            };
+        });
+    </script>
 </body>
 </html>
