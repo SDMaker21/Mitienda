@@ -30,43 +30,82 @@
         <p>Productos deportivos, entrega y compra vía WhatsApp</p>
     </header>
     <section class="productos">
-        <div class="producto">
+        <div class="producto" data-producto="Conjuntos deportivos sin mangas">
             <img src="https://5a384c9915.cbaul-cdnwnd.com/8f9e33337ca9ac4f916553c9e1446aca/200000086-d2418d2419/D_NQ_NP_818489-MLV74424868417_022024-O.jpeg?ph=5a384c9915" alt="Conjuntos deportivos sin mangas">
             <h2>Conjuntos deportivos sin mangas</h2>
             <p>Tallas S, M, L, XL</p>
             <div class="precio">12.00 VEF</div>
-            <button>Comprar</button>
+            <button class="comprarBtn">Comprar</button>
         </div>
-        <div class="producto">
+        <div class="producto" data-producto="Conjuntos deportivos">
             <img src="https://5a384c9915.cbaul-cdnwnd.com/8f9e33337ca9ac4f916553c9e1446aca/200000084-7a5e27a5e4/D_NQ_NP_2X_705188-MLV70393221451_072023-F.jpeg?ph=5a384c9915" alt="Conjuntos deportivos">
             <h2>Conjuntos deportivos</h2>
             <p>Tallas S, M, L, XL</p>
             <div class="precio">12.00 VEF</div>
-            <button>Comprar</button>
+            <button class="comprarBtn">Comprar</button>
         </div>
-        <div class="producto">
+        <div class="producto" data-producto="Franelillas">
             <img src="https://5a384c9915.cbaul-cdnwnd.com/8f9e33337ca9ac4f916553c9e1446aca/200000082-1be951be97/D_NQ_NP_2X_632970-MLV76085794313_042024-F.jpeg?ph=5a384c9915" alt="Franelillas">
             <h2>Franelillas</h2>
             <p>Tallas S, M, L, XL</p>
             <div class="precio">6.50 VEF</div>
-            <button>Comprar</button>
+            <button class="comprarBtn">Comprar</button>
         </div>
-        <div class="producto">
+        <div class="producto" data-producto="Shorts Deportivos para Caballeros">
             <img src="https://5a384c9915.cbaul-cdnwnd.com/8f9e33337ca9ac4f916553c9e1446aca/200000080-0fd660fd67/D_NQ_NP_852347-MLV75036575631_032024-O.jpeg?ph=5a384c9915" alt="Shorts Deportivos para Caballeros">
             <h2>Shorts Deportivos para Caballeros</h2>
             <p>Tallas S, M, L, XL</p>
             <div class="precio">6.00 VEF</div>
-            <button>Comprar</button>
+            <button class="comprarBtn">Comprar</button>
         </div>
-        <div class="producto">
+        <div class="producto" data-producto="Franelas Deportivas">
             <img src="https://5a384c9915.cbaul-cdnwnd.com/8f9e33337ca9ac4f916553c9e1446aca/200000078-158f4158f6/D_NQ_NP_2X_789169-MLV74308348722_022024-F.jpeg?ph=5a384c9915" alt="Franelas Deportivas">
             <h2>Franelas Deportivas</h2>
             <p>Tallas S, M, L, XL</p>
             <div class="precio">6.50 VEF</div>
-            <button>Comprar</button>
+            <button class="comprarBtn">Comprar</button>
         </div>
-        
     </section>
+    <!-- Ventana emergente de comentarios por producto -->
+    <div id="popupComentario" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000a;z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:#181818;padding:2rem 1.5rem;border-radius:1rem;max-width:95vw;width:350px;box-shadow:0 2px 16px #0008;position:relative;">
+            <button id="cerrarPopupComentario" style="position:absolute;top:10px;right:10px;background:#2d6cdf;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:1.2rem;cursor:pointer;">✕</button>
+            <h3 id="popupTitulo" style="color:#25d366;text-align:center;margin-bottom:1rem;"></h3>
+            <form id="formPopupComentario">
+                <textarea id="inputComentario" rows="3" placeholder="Escribe tu comentario..." style="width:100%;border-radius:0.5rem;padding:0.5rem;border:none;resize:vertical;"></textarea>
+                <input id="inputNombre" type="text" placeholder="Tu nombre (opcional)" style="width:100%;margin-top:0.5rem;border-radius:0.5rem;padding:0.5rem;border:none;">
+                <button type="submit" style="margin-top:0.5rem;background:#25d366;color:#fff;border:none;padding:0.5rem 1.5rem;border-radius:0.5rem;cursor:pointer;width:100%;">Comentar</button>
+            </form>
+            <div id="listaComentarios" style="margin-top:1rem;max-height:180px;overflow-y:auto;"></div>
+        </div>
+    </div>
+    <!-- Ventana emergente de chat global por producto -->
+    <div id="popupChatGlobal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000a;z-index:3000;align-items:center;justify-content:center;">
+        <div style="background:#181818;padding:2rem 1.5rem;border-radius:1rem;max-width:95vw;width:350px;box-shadow:0 2px 16px #0008;position:relative;">
+            <button id="cerrarPopupChatGlobal" style="position:absolute;top:10px;right:10px;background:#2d6cdf;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:1.2rem;cursor:pointer;">✕</button>
+            <h3 id="popupChatTitulo" style="color:#2d6cdf;text-align:center;margin-bottom:1rem;"></h3>
+            <div id="chatGlobalMensajes" style="background:#222;padding:1rem;border-radius:0.7rem;min-height:120px;max-height:180px;overflow-y:auto;margin-bottom:1rem;"></div>
+            <form id="formChatGlobal" style="display:flex;gap:0.5rem;">
+                <input type="text" id="chatGlobalNombre" placeholder="Tu nombre" style="flex:1;border-radius:0.5rem 0 0 0.5rem;padding:0.5rem;border:none;">
+                <input type="text" id="chatGlobalMensaje" placeholder="Escribe tu mensaje..." style="flex:2;border-radius:0 0.5rem 0.5rem 0;padding:0.5rem;border:none;">
+                <button type="submit" style="background:#25d366;color:#fff;border:none;padding:0.5rem 1rem;border-radius:0.5rem;cursor:pointer;">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Ventana emergente de detalle de producto y chat global -->
+    <div id="popupProducto" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000a;z-index:4000;align-items:center;justify-content:center;">
+        <div id="popupProductoContenido" style="background:#181818;padding:2rem 1.5rem;border-radius:1rem;max-width:95vw;width:370px;box-shadow:0 2px 16px #0008;position:relative;">
+            <button id="cerrarPopupProducto" style="position:absolute;top:10px;right:10px;background:#2d6cdf;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:1.2rem;cursor:pointer;">✕</button>
+            <div id="popupProductoInfo"></div>
+            <h3 id="popupChatTitulo" style="color:#2d6cdf;text-align:center;margin-bottom:1rem;"></h3>
+            <div id="chatGlobalMensajes" style="background:#222;padding:1rem;border-radius:0.7rem;min-height:120px;max-height:180px;overflow-y:auto;margin-bottom:1rem;"></div>
+            <form id="formChatGlobal" style="display:flex;gap:0.5rem;">
+                <input type="text" id="chatGlobalNombre" placeholder="Tu nombre" style="flex:1;border-radius:0.5rem 0 0 0.5rem;padding:0.5rem;border:none;">
+                <input type="text" id="chatGlobalMensaje" placeholder="Escribe tu mensaje..." style="flex:2;border-radius:0 0.5rem 0.5rem 0;padding:0.5rem;border:none;">
+                <button type="submit" style="background:#25d366;color:#fff;border:none;padding:0.5rem 1rem;border-radius:0.5rem;cursor:pointer;">Enviar</button>
+            </form>
+        </div>
+    </div>
     <div class="contacto">
         <p><b>Para la entrega y compra del producto comunicarse con el vendedor vía WhatsApp</b></p>
         <p>Gmail: sm172607q@gmail.com<br>Teléfono: 04163403334</p>
@@ -100,6 +139,145 @@
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             };
         });
+        // Comentarios (solo local, no se guardan en servidor)
+        const comentarioForm = document.getElementById('comentarioForm');
+        const comentarioInput = document.getElementById('comentarioInput');
+        const nombreInput = document.getElementById('nombreInput');
+        const comentariosLista = document.getElementById('comentariosLista');
+        let comentarios = [];
+        comentarioForm.onsubmit = function(e) {
+            e.preventDefault();
+            if(comentarioInput.value.trim() === '') return;
+            const nombre = nombreInput.value.trim() || 'Anónimo';
+            comentarios.push({nombre, texto: comentarioInput.value.trim()});
+            mostrarComentarios();
+            comentarioInput.value = '';
+            nombreInput.value = '';
+        };
+        function mostrarComentarios() {
+            comentariosLista.innerHTML = comentarios.map(c => `<div style='margin-bottom:1rem;padding:1rem;background:#222;border-radius:0.5rem;'><b style='color:#25d366;'>${c.nombre}:</b> <span style='color:#f8f9fa;'>${c.texto}</span></div>`).join('');
+        }
+        // Contacto (solo muestra mensaje de éxito, no envía realmente)
+        const contactoForm = document.getElementById('contactoForm');
+        const contactoRespuesta = document.getElementById('contactoRespuesta');
+        contactoForm.onsubmit = function(e) {
+            e.preventDefault();
+            contactoRespuesta.textContent = '¡Mensaje enviado! Pronto nos pondremos en contacto contigo.';
+            contactoForm.reset();
+        };
+        // Comentarios por producto (localStorage por producto)
+        document.querySelectorAll('.comentarBtn').forEach(function(btn) {
+            btn.onclick = function() {
+                const producto = btn.closest('.producto').getAttribute('data-producto');
+                document.getElementById('popupTitulo').textContent = 'Comentarios sobre ' + producto;
+                document.getElementById('popupComentario').style.display = 'flex';
+                document.getElementById('formPopupComentario').setAttribute('data-producto', producto);
+                mostrarComentariosProducto(producto);
+            };
+        });
+        document.getElementById('cerrarPopupComentario').onclick = function() {
+            document.getElementById('popupComentario').style.display = 'none';
+        };
+        document.getElementById('formPopupComentario').onsubmit = function(e) {
+            e.preventDefault();
+            const producto = e.target.getAttribute('data-producto');
+            const nombre = document.getElementById('inputNombre').value.trim() || 'Anónimo';
+            const texto = document.getElementById('inputComentario').value.trim();
+            if(!texto) return;
+            let comentarios = JSON.parse(localStorage.getItem('comentarios_' + producto) || '[]');
+            comentarios.push({nombre, texto});
+            localStorage.setItem('comentarios_' + producto, JSON.stringify(comentarios));
+            document.getElementById('inputComentario').value = '';
+            document.getElementById('inputNombre').value = '';
+            mostrarComentariosProducto(producto);
+        };
+        function mostrarComentariosProducto(producto) {
+            let comentarios = JSON.parse(localStorage.getItem('comentarios_' + producto) || '[]');
+            document.getElementById('listaComentarios').innerHTML = comentarios.map(c => `<div style='margin-bottom:0.7rem;padding:0.7rem;background:#222;border-radius:0.5rem;'><b style='color:#25d366;'>${c.nombre}:</b> <span style='color:#f8f9fa;'>${c.texto}</span></div>`).join('') || '<div style="color:#888;text-align:center;">Sin comentarios aún.</div>';
+        }
+        // Chat simulado tipo DM (solo local, no envía a servidor)
+        const dmForm = document.getElementById('dmForm');
+        const dmChat = document.getElementById('dmChat');
+        let mensajesDM = JSON.parse(localStorage.getItem('mensajesDM') || '[]');
+        function renderDM() {
+            dmChat.innerHTML = mensajesDM.map(m => `<div style='margin-bottom:0.7rem;'><b style='color:#25d366;'>${m.nombre||'Anónimo'}:</b> <span style='color:#f8f9fa;'>${m.texto}</span></div>`).join('') || '<div style="color:#888;text-align:center;">No hay mensajes aún.</div>';
+            dmChat.scrollTop = dmChat.scrollHeight;
+        }
+        dmForm.onsubmit = function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('dmNombre').value.trim() || 'Anónimo';
+            const texto = document.getElementById('dmMensaje').value.trim();
+            if(!texto) return;
+            mensajesDM.push({nombre, texto});
+            localStorage.setItem('mensajesDM', JSON.stringify(mensajesDM));
+            renderDM();
+            document.getElementById('dmMensaje').value = '';
+        };
+        renderDM();
+        // Botón para abrir chat global en cada producto
+        document.querySelectorAll('.producto').forEach(function(prod) {
+            // Crear botón de chat global si no existe
+            if(!prod.querySelector('.chatGlobalBtn')) {
+                let btn = document.createElement('button');
+                btn.textContent = 'Chat Global';
+                btn.className = 'chatGlobalBtn';
+                btn.style = 'margin-left:0.5rem;background:#c13584;color:#fff;border:none;padding:0.5rem 1rem;border-radius:0.5rem;cursor:pointer;';
+                prod.appendChild(btn);
+                btn.onclick = function() {
+                    const producto = prod.getAttribute('data-producto');
+                    document.getElementById('popupChatTitulo').textContent = 'Chat global de ' + producto;
+                    document.getElementById('popupChatGlobal').style.display = 'flex';
+                    document.getElementById('formChatGlobal').setAttribute('data-producto', producto);
+                    renderChatGlobal(producto);
+                };
+            }
+        });
+        document.getElementById('cerrarPopupChatGlobal').onclick = function() {
+            document.getElementById('popupChatGlobal').style.display = 'none';
+        };
+        // Mostrar detalle y chat global al hacer clic en el producto (excepto botones)
+        document.querySelectorAll('.producto').forEach(function(prod) {
+            prod.addEventListener('click', function(e) {
+                if (e.target.tagName === 'BUTTON') return;
+                const producto = prod.getAttribute('data-producto');
+                // Copiar info del producto
+                const img = prod.querySelector('img').outerHTML;
+                const nombre = prod.querySelector('h2').outerText;
+                const desc = prod.querySelector('p').outerText;
+                const precio = prod.querySelector('.precio').outerText;
+                document.getElementById('popupProductoInfo').innerHTML = `
+                    <div style='text-align:center;'>${img}</div>
+                    <h2 style='color:#25d366;text-align:center;'>${nombre}</h2>
+                    <p style='text-align:center;'>${desc}</p>
+                    <div style='color:#2d6cdf;font-weight:bold;text-align:center;font-size:1.2rem;'>${precio}</div>
+                `;
+                document.getElementById('popupChatTitulo').textContent = 'Chat global de ' + producto;
+                document.getElementById('popupProducto').style.display = 'flex';
+                document.getElementById('formChatGlobal').setAttribute('data-producto', producto);
+                renderChatGlobal(producto);
+            });
+        });
+        document.getElementById('cerrarPopupProducto').onclick = function() {
+            document.getElementById('popupProducto').style.display = 'none';
+        };
+        // Mover funciones de chat global aquí para compatibilidad
+        document.getElementById('formChatGlobal').onsubmit = function(e) {
+            e.preventDefault();
+            const producto = e.target.getAttribute('data-producto');
+            const nombre = document.getElementById('chatGlobalNombre').value.trim() || 'Anónimo';
+            const texto = document.getElementById('chatGlobalMensaje').value.trim();
+            if(!texto) return;
+            let mensajes = JSON.parse(localStorage.getItem('chatGlobal_' + producto) || '[]');
+            mensajes.push({nombre, texto});
+            localStorage.setItem('chatGlobal_' + producto, JSON.stringify(mensajes));
+            renderChatGlobal(producto);
+            document.getElementById('chatGlobalMensaje').value = '';
+        };
+        function renderChatGlobal(producto) {
+            let mensajes = JSON.parse(localStorage.getItem('chatGlobal_' + producto) || '[]');
+            document.getElementById('chatGlobalMensajes').innerHTML = mensajes.map(m => `<div style='margin-bottom:0.7rem;'><b style='color:#25d366;'>${m.nombre}:</b> <span style='color:#f8f9fa;'>${m.texto}</span></div>`).join('') || '<div style="color:#888;text-align:center;">No hay mensajes aún.</div>';
+            document.getElementById('chatGlobalMensajes').scrollTop = document.getElementById('chatGlobalMensajes').scrollHeight;
+        }
     </script>
 </body>
 </html>
